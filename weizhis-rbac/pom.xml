@@ -13,7 +13,7 @@
 
     <parent>
         <groupId>cn.weizhis.cms</groupId>
-        <artifactId>weizhi-cms-parent</artifactId>
+        <artifactId>weizhis-cms-parent</artifactId>
         <version>1.0.0</version>
     </parent>
 

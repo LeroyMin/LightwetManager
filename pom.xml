@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.weizhis.cms</groupId>
-    <artifactId>weizhi-cms-parent</artifactId>
+    <artifactId>weizhis-cms-parent</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>weizhi-cms-parent</name>
+    <name>weizhis-cms-parent</name>
     <description>weeizhis cms</description>
 
     <modules>
