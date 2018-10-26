@@ -1,2 +1,0 @@
-# LightwetManager
-Registration Center

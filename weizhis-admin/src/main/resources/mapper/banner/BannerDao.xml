@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.weizhis.cms.dao.banner.BannerDao">
+    <select id="queryList" resultType="cn.weizhis.cms.entity.banner.BannerEntity">
+        select * from banner
+        <where>
+            <if test="name != null">
+                and `name` = #{name}
+            </if>
+            <if test="createTime != null">
+                and `create_time` &lt;= #{createTime,jdbcType=DATE}
+            </if>
+            <if test="updateTime != null">
+                and <![CDATA[ update_time <= #{updateTime,jdbcType=DATE}  ]]>
+            </if>
+        </where>
+        limit #{currPage},#{pageSize}
+    </select>
+
+    <select id="queryTotal" resultType="java.lang.Integer">
+        select count(*) from banner
+    </select>
+
+    <insert id="save" parameterType="cn.weizhis.cms.entity.banner.BannerEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into banner
+        (
+          `name`,
+          `forward_type`,
+          `forward_url`,
+          `image_url`,
+          `status`,
+          `sort`,
+          `delete_time`,
+          `remark`,
+          `creator`,
+          `ceator_id`
+          `updator`,
+          `updator_id`,
+          `ceate_time`,
+          `update_time`
+        )
+        values
+        (
+          #{name},
+		  #{forwardType},
+		  #{forwardUrl},
+		  #{imageUrl},
+		  #{status},
+		  #{sort},
+		  #{deleteTime},
+		  #{remark},
+		  #{creator},
+		  #{ceatorId},
+		  #{updator},
+		  #{updatorId},
+		  #{ceateTime},
+		  #{updateTime}
+        )
+    </insert>
+
+    <update id="update" parameterType="cn.weizhis.cms.entity.banner.BannerEntity">
+        update banner set
+        (
+          status = "0",
+          delete_time = #{deleteTime}
+        )
+        where id=#{id}
+    </update>
+</mapper>

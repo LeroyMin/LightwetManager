@@ -1,0 +1,33 @@
+# Tomcat
+server:
+    tomcat:
+        uri-encoding: UTF-8
+        max-threads: 1000
+        min-spare-threads: 30
+    port: 8081
+    servlet:
+        context-path: /cms
+spring:
+    # \u73AF\u5883 dev|test|prod
+    profiles:
+        active: dev
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+    servlet:
+        multipart:
+        max-file-size: 100MB
+        max-request-size: 100MB
+        enabled: true
+#    freemarker:
+#      suffix: .html
+#      request-context-attribute: request
+
+mybatis:
+  type-aliases-package: cn.weizhis.cms.entity.*
+  mapper-locations: classpath*:mapper/*/*Dao.xml
+  db-column-underline: true
+  configuration:
+    cache-enabled: true
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
