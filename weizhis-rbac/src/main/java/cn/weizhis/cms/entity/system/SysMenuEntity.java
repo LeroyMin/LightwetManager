@@ -14,7 +14,7 @@ public class SysMenuEntity {
     /**
      * 菜单ID
      */
-    private Long mId;
+    private Long id;
 
     /**
      * 父菜单ID，一级菜单为0
@@ -29,12 +29,12 @@ public class SysMenuEntity {
     /**
      * 菜单名称
      */
-    private String mName;
+    private String name;
 
     /**
      * 菜单URL
      */
-    private String mUrl;
+    private String url;
 
     /**
      * 授权(多个用逗号分隔，如：user:list,user:create)
@@ -49,7 +49,7 @@ public class SysMenuEntity {
     /**
      * 菜单图标
      */
-    private String mIcon;
+    private String icon;
 
     /**
      * 排序
@@ -57,6 +57,6 @@ public class SysMenuEntity {
     private Integer orderNum;
 
     //逻辑与视图字段
-    private List<SysMenuEntity> list;
+    private List<SysMenuEntity> children;
     private Boolean open;
 }

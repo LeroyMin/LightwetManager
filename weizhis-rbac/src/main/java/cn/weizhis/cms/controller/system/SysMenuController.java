@@ -51,8 +51,8 @@ public class SysMenuController extends AbstractController {
 
         //添加顶级菜单
         SysMenuEntity root = new SysMenuEntity();
-        root.setMId(0L);
-        root.setMName("一级菜单");
+        root.setId(0L);
+        root.setName("一级菜单");
         root.setParentId(-1L);
         root.setOpen(true);
         menuList.add(root);
@@ -164,7 +164,7 @@ public class SysMenuController extends AbstractController {
      * 验证参数是否正确
      */
     private void verifyForm(SysMenuEntity menu){
-        if(StringUtils.isBlank(menu.getMName())){
+        if(StringUtils.isBlank(menu.getName())){
             throw new BizzException("菜单名称不能为空");
         }
 
@@ -174,7 +174,7 @@ public class SysMenuController extends AbstractController {
 
         //菜单
         if(menu.getType() == MenuType.MENU.getValue()){
-            if(StringUtils.isBlank(menu.getMUrl())){
+            if(StringUtils.isBlank(menu.getUrl())){
                 throw new BizzException("菜单URL不能为空");
             }
         }

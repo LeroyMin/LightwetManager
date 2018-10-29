@@ -10,24 +10,24 @@
     <insert id="save" parameterType="cn.weizhis.cms.entity.system.SysMenuEntity">
 		insert into sys_menu
 		(
-			`m_id`,
+			`id`,
 			`parent_id`, 
-			`m_name`,
-			`m_url`,
+			`name`,
+			`url`,
 			`perms`, 
 			`type`, 
-			`m_icon`,
+			`icon`,
 			`order_num`
 		)
 		values
 		(
-			#{mId},
+			#{id},
 			#{parentId}, 
-			#{mName},
-			#{mUrl},
+			#{name},
+			#{url},
 			#{perms}, 
 			#{type}, 
-			#{mIcon},
+			#{icon},
 			#{orderNum}
 		)
 	</insert>
@@ -41,7 +41,7 @@
 	</select>
 
     <select id="queryList" resultType="cn.weizhis.cms.entity.system.SysMenuEntity">
-        select m.*,(select p.m_name from sys_menu p where p.m_id = m.parent_id) as parentName
+        select m.*,(select p.name from sys_menu p where p.id = m.parent_id) as parentName
         from sys_menu m
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
@@ -58,10 +58,10 @@
 
     <!-- 查询用户的权限列表 -->
     <select id="queryUserList" resultType="cn.weizhis.cms.entity.system.SysMenuEntity">
-		select distinct m.*,(select p.m_name from sys_menu p where p.m_id = m.parent_id) as parentName
+		select distinct m.*,(select p.name from sys_menu p where p.id = m.parent_id) as parentName
 			from sys_user_role ur 
 			LEFT JOIN sys_role_menu rm on ur.role_id = rm.role_id 
-			LEFT JOIN sys_menu m on rm.m_id = m.m_id
+			LEFT JOIN sys_menu m on rm.m_id = m.id
 		where ur.user_id = #{userId} order by m.order_num asc
 	</select>
 
@@ -73,25 +73,25 @@
         update sys_menu
         <set>
             <if test="parentId != null">`parent_id` = #{parentId}, </if>
-            <if test="mName != null">`m_name` = #{mName}, </if>
-            <if test="mUrl != null">`m_url` = #{mUrl}, </if>
+            <if test="name != null">`name` = #{name}, </if>
+            <if test="url != null">`url` = #{url}, </if>
             <if test="perms != null">`perms` = #{perms}, </if>
             <if test="type != null">`type` = #{type}, </if>
-            <if test="mIcon != null">`m_icon` = #{mIcon}, </if>
+            <if test="icon != null">`icon` = #{icon}, </if>
             <if test="orderNum != null">`order_num` = #{orderNum}</if>
         </set>
         where menu_id = #{mId}
     </update>
 
     <delete id="deleteBatch">
-        delete from sys_menu where m_id in
-        <foreach item="mId" collection="array" open="(" separator="," close=")">
-            #{mId}
+        delete from sys_menu where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
         </foreach>
         ;
-        delete from sys_role_menu where m_id in
-        <foreach item="mId" collection="array" open="(" separator="," close=")">
-            #{mId}
+        delete from sys_role_menu where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
         </foreach>
     </delete>
 

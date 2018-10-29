@@ -37,7 +37,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 
         List<SysMenuEntity> userMenuList = new ArrayList<>();
         for(SysMenuEntity menu : menuList){
-            if(menuIdList.contains(menu.getMId())){
+            if(menuIdList.contains(menu.getId())){
                 userMenuList.add(menu);
             }
         }
@@ -149,7 +149,7 @@ public class SysMenuServiceImpl implements SysMenuService {
 
         for(SysMenuEntity entity : menuList){
             if(entity.getType() == MenuType.CATALOG.getValue()){//目录
-                entity.setList(getMenuTreeList(queryListParentId(entity.getMId(), menuIdList), menuIdList));
+                entity.setChildren(getMenuTreeList(queryListParentId(entity.getId(), menuIdList), menuIdList));
             }
             subMenuList.add(entity);
         }
