@@ -114,6 +114,11 @@ public class SysUserServiceImpl implements SysUserService {
         return sysUserDao.updatePassword(map);
     }
 
+    @Override
+    public int remove(SysUserEntity userEntity) {
+        return sysUserDao.remove(userEntity);
+    }
+
     /**
      * 检查角色是否越权
      */

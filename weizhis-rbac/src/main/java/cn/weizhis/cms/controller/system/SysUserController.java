@@ -8,6 +8,7 @@ import cn.weizhis.cms.entity.system.SysUserEntity;
 import cn.weizhis.cms.service.system.SysUserRoleService;
 import cn.weizhis.cms.service.system.SysUserService;
 import cn.weizhis.cms.shiro.ShiroUtils;
+import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Sha256Hash;
@@ -34,9 +35,9 @@ public class SysUserController extends AbstractController {
     /**
      * 所有用户列表
      */
-    @RequestMapping("/list")
+    @PostMapping("/list")
     @RequiresPermissions("sys:user:list")
-    public InvokeResult list(@RequestParam Map<String, Object> params){
+    public InvokeResult list(@RequestBody Map<String, Object> params){
         InvokeResult result = new InvokeResult();
         //只有超级管理员，才能查看所有管理员列表
         if(getUserId() != Constant.SUPER_ADMIN){
@@ -99,18 +100,19 @@ public class SysUserController extends AbstractController {
     public InvokeResult info(@PathVariable("userId") Long userId){
         InvokeResult result = new InvokeResult();
         SysUserEntity user = sysUserService.queryUserByUserId(userId);
-
+        System.out.println(JSON.toJSONString(user));
         //获取用户所属的角色列表
         List<Long> roleIdList = sysUserRoleService.queryRoleIdList(userId);
+        System.out.println(JSON.toJSONString(roleIdList));
         user.setRoleIdList(roleIdList);
-        result.setData(new HashMap<String,Object>().put("user", user));
+        result.setData(user);
         return result;
     }
 
     /**
      * 保存用户
      */
-    @RequestMapping("/save")
+    @PostMapping("/save")
     @RequiresPermissions("sys:user:save")
     public InvokeResult save(@RequestBody SysUserEntity user){
         InvokeResult result = new InvokeResult();
@@ -125,7 +127,7 @@ public class SysUserController extends AbstractController {
     /**
      * 修改用户
      */
-    @RequestMapping("/update")
+    @PostMapping("/update")
     @RequiresPermissions("sys:user:update")
     public InvokeResult update(@RequestBody SysUserEntity user){
         InvokeResult result = new InvokeResult();
@@ -134,6 +136,20 @@ public class SysUserController extends AbstractController {
         user.setCreateUserId(getUserId());
         sysUserService.updateUser(user);
 
+        return result.sucess();
+    }
+
+    /**
+     * 修改用户
+     */
+    @RequestMapping("/remove/{userId}")
+    @RequiresPermissions("sys:user:remove")
+    public InvokeResult remove(@PathVariable("userId") Long userId){
+        InvokeResult result = new InvokeResult();
+        SysUserEntity userEntity = new SysUserEntity();
+        userEntity.setUserId(userId);
+        userEntity.setStatus(0);
+        sysUserService.remove(userEntity);
         return result.sucess();
     }
 

@@ -1,5 +1,6 @@
 package cn.weizhis.cms.entity.system;
 
+import cn.weizhis.cms.common.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @Description:
  */
 @Data
-public class SysRoleEntity {
+public class SysRoleEntity extends BaseEntity {
     /**
      * 角色ID
      */

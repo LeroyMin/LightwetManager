@@ -1,5 +1,6 @@
 package cn.weizhis.cms.entity.system;
 
+import cn.weizhis.cms.common.BaseEntity;
 import lombok.Data;
 
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.Date;
  * @Description:
  */
 @Data
-public class SysUserTokenEntity {
+public class SysUserTokenEntity extends BaseEntity {
     //用户ID
     private Long userId;
     //token

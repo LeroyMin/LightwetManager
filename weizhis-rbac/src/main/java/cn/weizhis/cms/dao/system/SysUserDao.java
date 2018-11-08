@@ -33,4 +33,9 @@ public interface SysUserDao extends BaseDao<SysUserEntity> {
      */
     int updatePassword(Map<String, Object> map);
 
+    /**
+     * 冻结用户
+     */
+    int remove(SysUserEntity userEntity);
+
 }

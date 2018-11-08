@@ -1,5 +1,6 @@
 package cn.weizhis.cms.entity.system;
 
+import cn.weizhis.cms.common.BaseEntity;
 import lombok.Data;
 
 /**
@@ -8,7 +9,7 @@ import lombok.Data;
  * @Description:
  */
 @Data
-public class SysRoleDeptEntity {
+public class SysRoleDeptEntity extends BaseEntity {
     private Long id;
 
     /**

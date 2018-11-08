@@ -84,4 +84,6 @@ public interface SysUserService {
      */
     int updatePassword(Long userId, String password, String newPassword);
 
+    int remove(SysUserEntity userEntity);
+
 }

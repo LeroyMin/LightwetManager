@@ -31,9 +31,9 @@ public class SysRoleController extends AbstractController {
     /**
      * 角色列表
      */
-    @RequestMapping("/list")
+    @PostMapping("/list")
     @RequiresPermissions("sys:role:list")
-    public InvokeResult list(@RequestParam Map<String, Object> params){
+    public InvokeResult list(@RequestBody Map<String, Object> params){
         InvokeResult result = new InvokeResult();
         //如果不是超级管理员，则只查询自己创建的角色列表
         if(getUserId() != Constant.SUPER_ADMIN){

@@ -86,7 +86,7 @@
     <update id="update" parameterType="cn.weizhis.cms.entity.system.SysUserEntity">
         update sys_user
         <set>
-            <if test="userName != null">`username` = #{userName}, </if>
+            <if test="userName != null">`user_name` = #{userName}, </if>
             <if test="password != null">`password` = #{password}, </if>
             <if test="email != null">`email` = #{email}, </if>
             <if test="mobile != null">`mobile` = #{mobile}, </if>
@@ -117,4 +117,8 @@
         </foreach>
     </delete>
 
+    <update id="remove" parameterType="cn.weizhis.cms.entity.system.SysUserEntity">
+        update sys_user set `status` = #{status}
+          where user_id = #{userId}
+    </update>
 </mapper>

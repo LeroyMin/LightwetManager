@@ -1,5 +1,6 @@
 package cn.weizhis.cms.entity.system;
 
+import cn.weizhis.cms.common.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -13,7 +14,7 @@ import java.util.List;
  * @Description:
  */
 @Data
-public class SysUserEntity implements Serializable {
+public class SysUserEntity extends BaseEntity implements Serializable {
     private static final long serialVersionUID = -1716610944195230414L;
     /**
      * 用户ID

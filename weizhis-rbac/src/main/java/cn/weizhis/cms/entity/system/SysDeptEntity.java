@@ -1,5 +1,6 @@
 package cn.weizhis.cms.entity.system;
 
+import cn.weizhis.cms.common.BaseEntity;
 import lombok.Data;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @Description:
  */
 @Data
-public class SysDeptEntity {
+public class SysDeptEntity extends BaseEntity {
     /**
      * 部门ID
      */
