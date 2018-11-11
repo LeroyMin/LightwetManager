@@ -8,11 +8,11 @@ package cn.weizhis.cms.common;
 public class InvokeResult<T> {
     private T data;
     private String message;
-    private boolean sucess;
+    private boolean success;
     private boolean hasErrors;
 
     public InvokeResult() {
-        this.sucess = true;
+        this.success = true;
         this.hasErrors = false;
     }
     public Object getData() {
@@ -27,8 +27,8 @@ public class InvokeResult<T> {
         return message;
     }
 
-    public boolean isSucess() {
-        return sucess;
+    public boolean isSuccess() {
+        return success;
     }
 
     public boolean isHasErrors() {
@@ -36,14 +36,14 @@ public class InvokeResult<T> {
     }
 
     public InvokeResult failure(String message){
-        this.sucess = false;
+        this.success = false;
         this.hasErrors = true;
         this.message = message;
         return this;
     }
 
-    public InvokeResult sucess(){
-        this.sucess = true;
+    public InvokeResult success(){
+        this.success = true;
         this.hasErrors = false;
         return this;
     }

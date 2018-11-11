@@ -105,7 +105,7 @@ public class SysDeptController extends AbstractController {
     public InvokeResult save(@RequestBody SysDeptEntity org){
         InvokeResult result = new InvokeResult();
         sysDeptService.save(org);
-        return result.sucess();
+        return result.success();
     }
 
     /**
@@ -116,7 +116,7 @@ public class SysDeptController extends AbstractController {
     public InvokeResult update(@RequestBody SysDeptEntity org){
         InvokeResult result = new InvokeResult();
         sysDeptService.update(org);
-        return result.sucess();
+        return result.success();
     }
 
     /**
@@ -134,7 +134,7 @@ public class SysDeptController extends AbstractController {
 
         sysDeptService.delete(orgId);
 
-        return result.sucess();
+        return result.success();
     }
 
 }

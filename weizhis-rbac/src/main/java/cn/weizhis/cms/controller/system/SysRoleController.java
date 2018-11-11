@@ -101,7 +101,7 @@ public class SysRoleController extends AbstractController {
         role.setCreateUserId(getUserId());
         sysRoleService.save(role);
 
-        return result.sucess();
+        return result.success();
     }
 
     /**
@@ -115,7 +115,7 @@ public class SysRoleController extends AbstractController {
         role.setCreateUserId(getUserId());
         sysRoleService.update(role);
 
-        return result.sucess();
+        return result.success();
     }
 
     /**
@@ -127,7 +127,7 @@ public class SysRoleController extends AbstractController {
         InvokeResult result = new InvokeResult();
         sysRoleService.deleteBatch(roleIds);
 
-        return result.sucess();
+        return result.success();
     }
 
 }

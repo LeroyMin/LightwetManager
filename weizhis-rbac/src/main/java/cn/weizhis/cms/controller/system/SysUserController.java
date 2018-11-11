@@ -15,7 +15,6 @@ import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -89,7 +88,7 @@ public class SysUserController extends AbstractController {
         //退出
         ShiroUtils.logout();
 
-        return result.sucess();
+        return result.success();
     }
 
     /**
@@ -121,7 +120,7 @@ public class SysUserController extends AbstractController {
         user.setCreateUserId(getUserId());
         sysUserService.save(user);
 
-        return result.sucess();
+        return result.success();
     }
 
     /**
@@ -136,21 +135,21 @@ public class SysUserController extends AbstractController {
         user.setCreateUserId(getUserId());
         sysUserService.updateUser(user);
 
-        return result.sucess();
+        return result.success();
     }
 
     /**
      * 修改用户
      */
-    @RequestMapping("/remove/{userId}")
+    @RequestMapping("/remove/{userId}/{status}")
     @RequiresPermissions("sys:user:remove")
-    public InvokeResult remove(@PathVariable("userId") Long userId){
+    public InvokeResult remove(@PathVariable("userId") Long userId,@PathVariable("status") String status){
         InvokeResult result = new InvokeResult();
         SysUserEntity userEntity = new SysUserEntity();
         userEntity.setUserId(userId);
-        userEntity.setStatus(0);
+        userEntity.setStatus("0".equals(status) ? 1 : 0);
         sysUserService.remove(userEntity);
-        return result.sucess();
+        return result.success();
     }
 
     /**
@@ -170,7 +169,7 @@ public class SysUserController extends AbstractController {
 
         sysUserService.deleteBatch(userIds);
 
-        return result.sucess();
+        return result.success();
     }
 
 }

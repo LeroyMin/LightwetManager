@@ -75,7 +75,7 @@ public class SysLoginController extends AbstractController {
         }catch (AuthenticationException e) {
             return result.failure("账户验证失败");
         }
-        return result.sucess();
+        return result.success();
     }
 
     /**
@@ -106,7 +106,7 @@ public class SysLoginController extends AbstractController {
 //            return result.failure("账号已被锁定,请联系管理员");
 //        }
 //        result = sysUserTokenService.createToken(user.getUserId());
-//        return result.sucess();
+//        return result.success();
 //    }
 
     /**

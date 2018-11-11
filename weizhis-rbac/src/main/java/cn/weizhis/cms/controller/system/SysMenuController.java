@@ -12,7 +12,6 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -104,7 +103,7 @@ public class SysMenuController extends AbstractController {
 
         sysMenuService.save(menu);
 
-        return result.sucess();
+        return result.success();
     }
 
     /**
@@ -119,7 +118,7 @@ public class SysMenuController extends AbstractController {
 
         sysMenuService.update(menu);
 
-        return result.sucess();
+        return result.success();
     }
 
     /**
@@ -141,7 +140,7 @@ public class SysMenuController extends AbstractController {
 
         sysMenuService.deleteBatch(new Long[]{menuId});
 
-        return result.sucess();
+        return result.success();
     }
 
     /**
